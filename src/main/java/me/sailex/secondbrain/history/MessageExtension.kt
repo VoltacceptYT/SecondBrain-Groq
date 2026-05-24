@@ -31,11 +31,11 @@ fun Message.toOllamaChatMessage(): OllamaChatMessage = OllamaChatMessage(
 )
 
 fun GroqChatMessage.toMessage(): Message = Message(
-    this.content,
-    this.role
+    content,
+    role
 )
 
 fun Message.toGroqChatMessage(): GroqChatMessage = GroqChatMessage(
-    this.role,
-    this.message
+    role,
+    message
 )
