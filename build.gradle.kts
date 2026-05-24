@@ -61,17 +61,13 @@ dependencies {
 
     include(modImplementation("io.github.ollama4j:ollama4j:1.0.97")!!)
 
-    //needed deps for openai communication
+    //needed deps for Groq communication
     include(modRuntimeOnly("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2")!!)
     include(modImplementation("com.fasterxml.jackson.core:jackson-core:2.18.0")!!)
     include(modImplementation("com.fasterxml.jackson.core:jackson-annotations:2.18.0")!!)
     include(modImplementation("com.fasterxml.jackson.core:jackson-databind:2.18.0")!!)
     include(modRuntimeOnly("com.fasterxml:classmate:1.7.0")!!)
-    include(modRuntimeOnly("com.github.victools:jsonschema-generator:4.37.0")!!)
-    include(modRuntimeOnly("com.github.victools:jsonschema-module-jackson:4.36.0")!!)
     include(modRuntimeOnly("io.github.sashirestela:slimvalidator:1.2.2")!!)
-    include(modRuntimeOnly("io.github.sashirestela:cleverclient:1.4.4")!!)
-    include(modImplementation("io.github.sashirestela:simple-openai:3.9.0")!!)
 
     include(modImplementation("org.apache.httpcomponents:httpcore:4.4")!!)
 

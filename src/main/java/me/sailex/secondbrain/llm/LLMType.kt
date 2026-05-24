@@ -2,6 +2,6 @@ package me.sailex.secondbrain.llm
 
 enum class LLMType(string: String) {
     OLLAMA("ollama"),
-    OPENAI("openai"),
+    GROQ("groq"),
     PLAYER2("player2")
 }

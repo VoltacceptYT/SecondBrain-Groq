@@ -68,7 +68,7 @@ public class NPCConfigScreen extends ConfigScreen<NPCConfig> {
         FlowLayout llmInfo = panel.childById(FlowLayout.class, "llmInfo");
         llmInfo.clearChildren();
 
-        //either show ollamaUrl or openai api key or isTTS checkbox
+        //either show ollamaUrl or Groq api key or isTTS checkbox
         TextAreaComponent llmInfoTextArea = ComponentsVersion.textArea(Sizing.fill(35), Sizing.fill(7));
         switch (config.getLlmType()) {
             case OLLAMA -> {
@@ -85,11 +85,11 @@ public class NPCConfigScreen extends ConfigScreen<NPCConfig> {
                         .onChanged(listener -> config.setTTS(!config.isTTS()));
                 llmInfo.child(isTTS);
             }
-            case OPENAI -> {
-                llmInfo.child(ComponentsVersion.label(Text.of(NPCConfig.OPENAI_API_KEY)).shadow(true));
-                llmInfoTextArea.text(config.getOpenaiApiKey())
+            case GROQ -> {
+                llmInfo.child(ComponentsVersion.label(Text.of(NPCConfig.GROQ_API_KEY)).shadow(true));
+                llmInfoTextArea.text(config.getGroqApiKey())
                         .onChanged()
-                        .subscribe(config::setOpenaiApiKey);
+                        .subscribe(config::setGroqApiKey);
                 llmInfo.child(llmInfoTextArea);
             }
         }
@@ -116,9 +116,9 @@ public class NPCConfigScreen extends ConfigScreen<NPCConfig> {
                         drawLlmInfo(panel);
                     });
             llmTypeDropDown.button(
-                    Text.of(LLMType.OPENAI.toString()),
+                    Text.of(LLMType.GROQ.toString()),
                     button -> {
-                        config.setLlmType(LLMType.OPENAI);
+                        config.setLlmType(LLMType.GROQ);
                         drawLlmInfo(panel);
                     });
         }
@@ -127,7 +127,7 @@ public class NPCConfigScreen extends ConfigScreen<NPCConfig> {
     private void drawLLMModelInput(FlowLayout panel) {
         panel.childById(LabelComponent.class, "llmModel-label").text(Text.of(NPCConfig.LLM_MODEL));
         switch (config.getLlmType()) {
-            case OLLAMA, OPENAI -> {
+            case OLLAMA, GROQ -> {
                 TextAreaComponent llmModel = ComponentsVersion.textArea(Sizing.fill(17), Sizing.fill(7))
                         .text(config.getLlmModel());
                 llmModel.onChanged().subscribe(config::setLlmModel);
